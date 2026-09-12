@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Venue AOCA 360 — Ecosistema</title>
+<title>Venue AOCA Impacto 360 — Ecosistema</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:100%;overflow-x:hidden}
@@ -115,7 +115,7 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
 .pts-1{background:#F0FDF4;color:#166534}
 .pts-05{background:#FFFBEB;color:#92400E}
 .pts-0{background:#FFEBEE;color:#C62828}
-.pil-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+/* OBSERVACIONES POR PILAR */.obs-block{padding:16px 20px;background:#F7FAFF}.obs-label{font-size:11px;font-weight:800;color:#4B6080;letter-spacing:.07em;text-transform:uppercase;display:flex;align-items:center;gap:6px;margin-bottom:8px}.obs-textarea{width:100%;background:#fff;border:1.5px solid #BFDBFE;border-radius:10px;padding:11px 13px;font-size:13px;color:#1A2035;font-family:inherit;outline:none;resize:vertical;min-height:64px;line-height:1.5;transition:border-color .2s,box-shadow .2s}.obs-textarea:focus{border-color:#2563EB;box-shadow:0 0 0 3px rgba(37,99,235,.12)}.obs-textarea::placeholder{color:#9AB0CA}.pil-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .pil-card{background:#fff;border-radius:12px;border:1.5px solid #DBEAFE;padding:14px 16px}
 .pil-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
 .pil-card-name{font-size:12px;font-weight:700;color:#1A2035;line-height:1.3}
@@ -184,8 +184,8 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
 <div id="pin-screen">
   <img class="pin-logo" src="logo_aoca.png" alt="AOCA">
   <div class="pin-card">
-    <div class="pin-eyebrow">Ecosistema AOCA 360</div>
-    <div class="pin-title">Registro de Actores<br>Sostenibles MICE</div>
+    <div class="pin-eyebrow">Ecosistema AOCA Impacto 360</div>
+    <div class="pin-title">AOCA Impacto 360<br><span style="font-size:13px;font-weight:600;color:#2563EB;letter-spacing:0.01em">Registro de Actores Sostenibles de la Industria de Eventos</span></div>
     <div class="pin-actor">🏢 Venue / Recinto</div>
     <div class="pin-sub">Ingresá tu clave de acceso para continuar</div>
     <div class="pin-input-wrap">
@@ -195,19 +195,19 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
     <button class="pin-btn" onclick="checkPin()">Ingresar →</button>
     <div class="pin-error" id="pinError">Clave incorrecta. Verificá e intentá de nuevo.</div>
   </div>
-  <div style="margin-top:20px;font-size:11px;color:rgba(255,255,255,0.4);text-align:center">Ecosistema · Venue AOCA 360 · 2026</div>
+  <div style="margin-top:20px;font-size:11px;color:rgba(255,255,255,0.4);text-align:center">Ecosistema · Venue AOCA Impacto 360 · 2026</div>
 </div>
 
 <header class="header">
   <div class="header-logo-bar">
     <div class="header-logo-inner">
       <img class="logo-img" src="logo_aoca.png" alt="AOCA">
-      <span class="header-tag">Programa de Sostenibilidad MICE · AOCA 360</span>
+      <span class="header-tag">AOCA Impacto 360</span>
     </div>
   </div>
   <div class="header-sub-bar">
     <div class="header-sub-inner">
-      <span class="header-sub">Ecosistema AOCA 360 · Registro Venue</span>
+      <span class="header-sub">Ecosistema AOCA Impacto 360 · Registro Venue</span>
       <span class="actor-badge">🏢 VENUE / RECINTO</span>
     </div>
   </div>
@@ -226,23 +226,17 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
 </div>
 
 <div class="intro">
-  <div class="intro-eyebrow">Ecosistema AOCA 360 · Etapa 2</div>
-  <h1 class="intro-t">Registro <em>Venue AOCA 360</em></h1>
-  <p class="intro-p">Completá los 21 criterios organizados en 4 pilares para obtener tu registro como Venue verificado del Ecosistema AOCA 360. El sistema calcula tu nivel (Inicial / Intermedio / Avanzado) en tiempo real según el puntaje acumulado total.</p>
+  <div class="intro-eyebrow">Ecosistema AOCA Impacto 360 · Etapa 2</div>
+  <h1 class="intro-t">Registro <em>Venue AOCA Impacto 360</em></h1>
+  <p class="intro-p">Completá los 21 criterios organizados en 4 pilares para obtener tu registro como Venue verificado del Ecosistema AOCA Impacto 360. El sistema calcula tu nivel (Inicial / Intermedio / Avanzado) en tiempo real según el puntaje acumulado total.</p>
 </div>
 
-<div class="bonus-card">
-  <span class="bonus-ico">⭐</span>
-  <div>
-    <div class="bonus-t">Beneficio para eventos que te contraten</div>
-    <div class="bonus-d">Al alcanzar nivel Intermedio o Avanzado, los eventos que te contraten obtienen <strong>+10% sobre el puntaje base del Pilar 1 — Gestión Sostenible</strong> de su Sello de Edición.</div>
-  </div>
 </div>
 
 <div class="niveles-ref">
   <div class="sect-lbl">Niveles de Registro</div>
-  <div class="nref"><span class="nref-ico">🔵</span><div><div class="nref-t">Inicial — ≥ 40% (≥ 8.4 pts)</div><div class="nref-d">Sin mínimo por pilar. Primer ingreso al Registro AOCA 360. Logo 'Inicial AOCA 360'.</div></div></div>
-  <div class="nref"><span class="nref-ico">🟢</span><div><div class="nref-t">Intermedio — ≥ 65% (≥ 13.7 pts)</div><div class="nref-d">Registro destacado + bonificación al evento contratante activa.</div></div></div>
+  <div class="nref"><span class="nref-ico">🔵</span><div><div class="nref-t">Inicial — ≥ 40% (≥ 8.4 pts)</div><div class="nref-d">Sin mínimo por pilar. Primer ingreso al Registro AOCA Impacto 360. Logo 'Inicial AOCA Impacto 360'.</div></div></div>
+  <div class="nref"><span class="nref-ico">🟢</span><div><div class="nref-t">Intermedio — ≥ 65% (≥ 13.7 pts)</div><div class="nref-d">Registro destacado en el Directorio AOCA Impacto 360.</div></div></div>
   <div class="nref"><span class="nref-ico">🟡</span><div><div class="nref-t">Avanzado — ≥ 85% (≥ 17.9 pts)</div><div class="nref-d">Máxima visibilidad en el Registro. Candidatura a la Distinción Nacional.</div></div></div>
 </div>
 
@@ -298,8 +292,8 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
 
 <div class="decl-card">
   <div class="sect-lbl">Declaración</div>
-  <p class="decl-txt">Declaro que la información consignada en este formulario es veraz y que cuento con evidencias disponibles para respaldarla ante requerimiento de la Secretaría Técnica AOCA 360. Entiendo que el registro tiene vigencia de 24 meses y que podré renovarlo en cualquier momento.</p>
-  <div class="firma-grid">
+  <p class="decl-txt">Declaro que la información consignada en este formulario es veraz y que cuento con evidencias disponibles para respaldarla ante requerimiento de la Secretaría Técnica AOCA Impacto 360. Entiendo que el registro tiene vigencia de 12 meses y que podré renovarlo en cualquier momento.</p>
+  <p class="decl-txt">🔒 Los datos declarados serán tratados de forma confidencial por AOCA Impacto 360 y utilizados exclusivamente para los fines de evaluación, seguimiento y comunicación institucional del programa.</p><div class="firma-grid">
     <div class="field"><label>Nombre y apellido</label><input type="text" id="f_nom" placeholder="Nombre completo" oninput="guardarProgreso()"></div>
     <div class="field"><label>Cargo</label><input type="text" id="f_cargo" placeholder="Cargo en el venue" oninput="guardarProgreso()"></div>
     <div class="field"><label>Organización / Venue</label><input type="text" id="f_org2" placeholder="Nombre del venue" oninput="guardarProgreso()"></div>
@@ -312,7 +306,7 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
   <button class="btn-s" onclick="window.print()">🖨 Guardar PDF</button>
   <button class="btn-s" onclick="limpiar()" style="border-color:#EF9A9A;color:#C62828">↺ Limpiar</button>
 </div>
-<div id="sendOk" class="send-ok">✓ Formulario enviado correctamente a AOCA 360. Recibirás confirmación dentro de los 10 días hábiles.</div>
+<div id="sendOk" class="send-ok">✓ Formulario enviado correctamente a AOCA Impacto 360. Recibirás confirmación dentro de los 10 días hábiles.</div>
 <div id="sendErr" class="send-err">⚠ Hubo un problema al enviar. Intentá de nuevo o contactá a AOCA.</div>
 <div class="autosave-tag">
   <span class="autosave-dot" id="autosaveDot"></span>
@@ -335,7 +329,7 @@ const PILARES=[
   ]},
   {id:'SE',n:'Impactos Socioeconómicos',color:'#1E3A8A',tot:4,crit:[
     {id:'V-SE-01',t:'Política de contratación que prioriza proveedores locales para la operación del venue.',e:'Política escrita o criterios incluidos en briefings de contratación.'},
-    {id:'V-SE-02',t:'Condiciones laborales formales para todo el personal propio y eventual del venue.',e:'Constancias de AFIP, contratos, recibos de sueldo.'},
+    {id:'V-SE-02',t:'Condiciones laborales formales para todo el personal propio y eventual del venue.',e:'Contratos, constancias de AFIP y/o declaración jurada del empleador.'},
     {id:'V-SE-03',t:'El venue ofrece sus espacios a organizaciones de la comunidad (uso solidario o a precio operativo).',e:'Política o programa documentado, registro de cesiones realizadas.'},
     {id:'V-SE-04',t:'Política de inclusión laboral activa (personas con discapacidad, neurodiversidad u otros grupos).',e:'Política interna, registros de contratación inclusiva, adhesión a iniciativas externas.'},
   ]},
@@ -359,16 +353,16 @@ const PILARES=[
 
 const TOTAL_CRIT=21;
 const estado={}, evidencias={};
-PILARES.forEach(p=>p.crit.forEach(c=>{estado[c.id]=null;}));
-const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbwde5HMmmOA7Vt-wkfYTGy0A89ceT6lQ1X7aE-ohwj1TF8OoGAU4QnKcrzxAaGHfsBOBw/exec';
-const LS_KEY='aoca360_venue_v2';
+PILARES.forEach(p=>p.crit.forEach(c=>{estado[c.id]=null;}));const observaciones={};PILARES.forEach(p=>{observaciones[p.id]='';});function guardarObservacion(pilarId,valor){observaciones[pilarId]=valor;guardarProgreso();}
+const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbwVmqFCAOIwXnCZK0IoiQfdnXDnDESv4R4qu23rrM6Rulw034pTHNrWqnqlibHcouq0/exec';
+const LS_KEY='aoca360_venue_v3';
 
 function renderPilares(){
   const cont=document.getElementById('pilaresContainer');
   PILARES.forEach((p,pi)=>{
     const div=document.createElement('div');
     div.className='pilar-block open';div.id='pb-'+p.id;
-    div.innerHTML=`<div class="pilar-hdr" style="background:linear-gradient(135deg,${p.color},${p.color}DD)" onclick="toggleP('${p.id}')"><div class="pilar-hdr-l"><span class="pilar-badge">P${pi+1}</span><span class="pilar-name">${p.n}</span></div><div style="display:flex;align-items:center;gap:6px"><span class="pilar-score" id="ps-${p.id}">0 / ${p.tot}</span><span class="pilar-chev">▼</span></div></div><div class="pilar-body">${p.crit.map(c=>`<div class="crit" id="c-${c.id}"><div><div class="crit-id">${c.id}</div><div class="crit-txt">${c.t}</div><div class="crit-meta"><span class="ev-hint">📋 ${c.e}</span></div><button class="ev-btn" id="evb-${c.id}" onclick="document.getElementById('evf-${c.id}').click()">📎 Adjuntar evidencia</button><input class="ev-file-input" type="file" id="evf-${c.id}" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx" onchange="archivoSeleccionado('${c.id}',this)"><div class="ev-file-preview" id="evp-${c.id}"><span>📄</span><span class="ev-file-name" id="evn-${c.id}"></span><button class="ev-file-remove" onclick="quitarArchivo('${c.id}')">✕</button></div></div><div class="crit-ctrl"><div class="opciones"><button class="op-btn" id="bs-${c.id}" onclick="set('${c.id}','si')" title="Implementado — 1 pt">✓</button><button class="op-btn" id="bm-${c.id}" onclick="set('${c.id}','med')" title="En proceso — 0.5 pts">◑</button><button class="op-btn" id="bn-${c.id}" onclick="set('${c.id}','no')" title="No aplica — 0 pts">✗</button></div><span class="pts-tag" id="pt-${c.id}">— pts</span></div></div>`).join('')}</div>`;
+    div.innerHTML=`<div class="pilar-hdr" style="background:linear-gradient(135deg,${p.color},${p.color}DD)" onclick="toggleP('${p.id}')"><div class="pilar-hdr-l"><span class="pilar-badge">P${pi+1}</span><span class="pilar-name">${p.n}</span></div><div style="display:flex;align-items:center;gap:6px"><span class="pilar-score" id="ps-${p.id}">0 / ${p.tot}</span><span class="pilar-chev">▼</span></div></div><div class="pilar-body">${p.crit.map(c=>`<div class="crit" id="c-${c.id}"><div><div class="crit-id">${c.id}</div><div class="crit-txt">${c.t}</div><div class="crit-meta"><span class="ev-hint">📋 ${c.e}</span></div><button class="ev-btn" id="evb-${c.id}" onclick="document.getElementById('evf-${c.id}').click()">📎 Adjuntar evidencia</button><input class="ev-file-input" type="file" id="evf-${c.id}" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx" onchange="archivoSeleccionado('${c.id}',this)"><div class="ev-file-preview" id="evp-${c.id}"><span>📄</span><span class="ev-file-name" id="evn-${c.id}"></span><button class="ev-file-remove" onclick="quitarArchivo('${c.id}')">✕</button></div></div><div class="crit-ctrl"><div class="opciones"><button class="op-btn" id="bs-${c.id}" onclick="set('${c.id}','si')" title="Implementado — 1 pt">✓</button><button class="op-btn" id="bm-${c.id}" onclick="set('${c.id}','med')" title="En proceso — 0.5 pts">◑</button><button class="op-btn" id="bn-${c.id}" onclick="set('${c.id}','no')" title="No aplica — 0 pts">✗</button></div><span class="pts-tag" id="pt-${c.id}">— pts</span></div></div>`).join('')}<div class="obs-block"><div class="obs-label">📝 Observaciones del pilar</div><textarea class="obs-textarea" id="obs-${p.id}" placeholder="Comentarios, aclaraciones o contexto adicional sobre este pilar (opcional)..." oninput="guardarObservacion('${p.id}', this.value)"></textarea></div></div>`;
     cont.appendChild(div);
   });
 }
@@ -438,8 +432,8 @@ function updateNivelRes(n,total,pct){
   const el=document.getElementById('nivelRes'),rI=document.getElementById('rIco'),rT=document.getElementById('rT'),rD=document.getElementById('rD');
   el.className='nivel-res';
   if(n==='avz'){el.classList.add('avz');rI.textContent='🟡';rT.textContent='NIVEL AVANZADO';rD.textContent=`Puntaje: ${total.toFixed(1)} / 21 pts (${pct.toFixed(0)}%). Máxima visibilidad en el Registro. Candidatura a la Distinción Nacional.`;}
-  else if(n==='int'){el.classList.add('int');rI.textContent='🟢';rT.textContent='NIVEL INTERMEDIO';rD.textContent=`Puntaje: ${total.toFixed(1)} / 21 pts (${pct.toFixed(0)}%). Registro destacado + bonificación activa para eventos contratantes (+10% Pilar 1).`;}
-  else if(n==='ini'){el.classList.add('ini');rI.textContent='🔵';rT.textContent='NIVEL INICIAL';rD.textContent=`Puntaje: ${total.toFixed(1)} / 21 pts (${pct.toFixed(0)}%). Primer nivel alcanzado. Ingreso al Registro AOCA 360.`;}
+  else if(n==='int'){el.classList.add('int');rI.textContent='🟢';rT.textContent='NIVEL INTERMEDIO';rD.textContent=`Puntaje: ${total.toFixed(1)} / 21 pts (${pct.toFixed(0)}%). Registro destacado en el Directorio AOCA Impacto 360.`;}
+  else if(n==='ini'){el.classList.add('ini');rI.textContent='🔵';rT.textContent='NIVEL INICIAL';rD.textContent=`Puntaje: ${total.toFixed(1)} / 21 pts (${pct.toFixed(0)}%). Primer nivel alcanzado. Ingreso al Registro AOCA Impacto 360.`;}
   else{rI.textContent='⬇';rT.textContent='Por debajo del umbral';rD.textContent=`Puntaje: ${total.toFixed(1)} / 21 pts (${pct.toFixed(0)}%). Necesitás ${Math.max(0,(8.4-total)).toFixed(1)} pts más para el Nivel Inicial.`;}
 }
 function updateMini(pd){
@@ -462,10 +456,10 @@ function guardarProgreso(){
   const dot=document.getElementById('autosaveDot'),msg=document.getElementById('autosaveMsg');
   if(dot)dot.classList.add('saving');
   const campos={d_nombre:document.getElementById('d_nombre')?.value||'',d_ciudad:document.getElementById('d_ciudad')?.value||'',d_resp:document.getElementById('d_resp')?.value||'',d_email:document.getElementById('d_email')?.value||'',d_socio:document.getElementById('d_socio')?.value||'',d_fecha:document.getElementById('d_fecha')?.value||'',d_cert:document.getElementById('d_cert')?.value||'',d_adicional:document.getElementById('d_adicional')?.value||'',f_nom:document.getElementById('f_nom')?.value||'',f_cargo:document.getElementById('f_cargo')?.value||'',f_org2:document.getElementById('f_org2')?.value||'',f_fecha:document.getElementById('f_fecha')?.value||''};
-  try{localStorage.setItem(LS_KEY,JSON.stringify({estado:{...estado},campos,timestamp:new Date().toISOString()}));setTimeout(()=>{if(dot)dot.classList.remove('saving');if(msg){const ts=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});msg.textContent='Guardado automáticamente a las '+ts;}},600);}catch(e){}
+  try{localStorage.setItem(LS_KEY,JSON.stringify({estado:{...estado},observaciones:{...observaciones},campos,timestamp:new Date().toISOString()}));setTimeout(()=>{if(dot)dot.classList.remove('saving');if(msg){const ts=new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});msg.textContent='Guardado automáticamente a las '+ts;}},600);}catch(e){}
 }
 function recuperarProgreso(){
-  try{const raw=localStorage.getItem(LS_KEY);if(!raw)return;const datos=JSON.parse(raw);Object.entries(datos.campos||{}).forEach(([id,val])=>{const el=document.getElementById(id);if(el&&val)el.value=val;});Object.entries(datos.estado||{}).forEach(([id,val])=>{if(val)set(id,val);});const msg=document.getElementById('autosaveMsg');if(msg&&datos.timestamp){const d=new Date(datos.timestamp);msg.textContent='Progreso recuperado del '+d.toLocaleDateString('es-AR')+' a las '+d.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});}}catch(e){}
+  try{const raw=localStorage.getItem(LS_KEY);if(!raw)return;const datos=JSON.parse(raw);Object.entries(datos.campos||{}).forEach(([id,val])=>{const el=document.getElementById(id);if(el&&val)el.value=val;});Object.entries(datos.estado||{}).forEach(([id,val])=>{if(val)set(id,val);});Object.entries(datos.observaciones||{}).forEach(([pid,val])=>{observaciones[pid]=val||'';const el=document.getElementById('obs-'+pid);if(el&&val)el.value=val;});const msg=document.getElementById('autosaveMsg');if(msg&&datos.timestamp){const d=new Date(datos.timestamp);msg.textContent='Progreso recuperado del '+d.toLocaleDateString('es-AR')+' a las '+d.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});}}catch(e){}
 }
 
 function enviarFormulario(){
@@ -475,7 +469,7 @@ function enviarFormulario(){
   PILARES.forEach(p=>{let pp=0,si=0,med=0;const cd={};p.crit.forEach(c=>{const v=estado[c.id];pp+=pts(v);if(v==='si')si++;else if(v==='med')med++;cd[c.id]={estado:v==='si'?'Implementado':v==='med'?'En proceso':v==='no'?'No aplica':'Sin marcar',pts:pts(v)};});total+=pp;pd[p.id]={pts:pp,tot:p.tot,pct:(pp/p.tot)*100};pilarRes.push(p.n+': '+pp.toFixed(1)+'/'+p.tot+' ('+(((pp/p.tot)*100).toFixed(0))+'%)');detalle[p.id]=cd;});
   const pct=((total/TOTAL_CRIT)*100).toFixed(1),nivel=calcNivel(parseFloat(pct)),nivelNom=nivel==='avz'?'AVANZADO':nivel==='int'?'INTERMEDIO':nivel==='ini'?'INICIAL':'Sin nivel';
   const archivos={};Object.entries(evidencias).forEach(([id,a])=>{if(a?.base64)archivos[id]={nombre:a.nombre,tipo:a.tipo,base64:a.base64};});
-  const payload={tipo_actor:'Venue',nombre,ciudad:document.getElementById('d_ciudad').value.trim(),resp:document.getElementById('d_resp').value.trim(),email:document.getElementById('d_email').value.trim(),socio:document.getElementById('d_socio').value,fecha:document.getElementById('d_fecha').value,cert:document.getElementById('d_cert').value.trim(),adicional:document.getElementById('d_adicional').value.trim(),firmaNom:document.getElementById('f_nom').value.trim(),firmaCargo:document.getElementById('f_cargo').value.trim(),firmaOrg:document.getElementById('f_org2').value.trim(),firmaFecha:document.getElementById('f_fecha').value,puntajeTotal:total.toFixed(1),porcentajeTotal:pct+'%',nivel:nivelNom,pilarResumen:pilarRes.join(' | '),p1_pct:pd['GS']?.pct.toFixed(0)+'%',p2_pct:pd['SE']?.pct.toFixed(0)+'%',p3_pct:pd['CI']?.pct.toFixed(0)+'%',p4_pct:pd['AM']?.pct.toFixed(0)+'%',detalle:JSON.stringify(detalle),archivos:JSON.stringify(archivos),timestamp:new Date().toISOString()};
+  const payload={tipo_actor:'Venue',nombre,ciudad:document.getElementById('d_ciudad').value.trim(),resp:document.getElementById('d_resp').value.trim(),email:document.getElementById('d_email').value.trim(),socio:document.getElementById('d_socio').value,fecha:document.getElementById('d_fecha').value,cert:document.getElementById('d_cert').value.trim(),adicional:document.getElementById('d_adicional').value.trim(),firmaNom:document.getElementById('f_nom').value.trim(),firmaCargo:document.getElementById('f_cargo').value.trim(),firmaOrg:document.getElementById('f_org2').value.trim(),firmaFecha:document.getElementById('f_fecha').value,puntajeTotal:total.toFixed(1),porcentajeTotal:pct+'%',nivel:nivelNom,pilarResumen:pilarRes.join(' | '),p1_pct:pd['GS']?.pct.toFixed(0)+'%',p2_pct:pd['SE']?.pct.toFixed(0)+'%',p3_pct:pd['CI']?.pct.toFixed(0)+'%',p4_pct:pd['AM']?.pct.toFixed(0)+'%',obs_p1:observaciones['GS']||'',obs_p2:observaciones['SE']||'',obs_p3:observaciones['CI']||'',obs_p4:observaciones['AM']||'',detalle:JSON.stringify(detalle),archivos:JSON.stringify(archivos),timestamp:new Date().toISOString()};
   const btn=document.getElementById('btnEnviar');btn.textContent='⏳ Enviando...';btn.classList.add('sending');btn.disabled=true;
   fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(()=>{btn.textContent='✓ Enviado';btn.classList.remove('sending');document.getElementById('sendOk').classList.add('vis');try{localStorage.removeItem(LS_KEY);}catch(e){}}).catch(()=>{btn.textContent='📤 Enviar a AOCA';btn.classList.remove('sending');btn.disabled=false;document.getElementById('sendErr').classList.add('vis');setTimeout(()=>document.getElementById('sendErr').classList.remove('vis'),5000);});
 }
@@ -483,7 +477,7 @@ function enviarFormulario(){
 function limpiar(){
   if(!confirm('¿Limpiar todo el formulario? Se perderá el progreso guardado.'))return;
   try{localStorage.removeItem(LS_KEY);}catch(e){}
-  Object.keys(estado).forEach(k=>{estado[k]=null;});Object.keys(evidencias).forEach(k=>{delete evidencias[k];});
+  Object.keys(estado).forEach(k=>{estado[k]=null;});Object.keys(evidencias).forEach(k=>{delete evidencias[k];});Object.keys(observaciones).forEach(k=>{observaciones[k]='';const el=document.getElementById('obs-'+k);if(el)el.value='';});
   PILARES.forEach(p=>p.crit.forEach(c=>{['s','m','n'].forEach(v=>{const b=document.getElementById('b'+v+'-'+c.id);if(b)b.className='op-btn';});const pt=document.getElementById('pt-'+c.id);if(pt){pt.textContent='— pts';pt.className='pts-tag';}const cr=document.getElementById('c-'+c.id);if(cr)cr.classList.remove('impl','proc');const evb=document.getElementById('evb-'+c.id);if(evb){evb.textContent='📎 Adjuntar evidencia';evb.classList.remove('cargada');}const evf=document.getElementById('evf-'+c.id);if(evf)evf.value='';const evp=document.getElementById('evp-'+c.id);if(evp)evp.classList.remove('vis');}));
   recalc();
 }

@@ -330,6 +330,7 @@ body{background:#F4F8F4;color:#1A2A1A;font-family:-apple-system,BlinkMacSystemFo
 <div class="decl-card">
   <div class="sect-lbl">Declaración del Organizador</div>
   <p class="decl-txt">Declaro que la información consignada en este Protocolo es veraz y que las evidencias indicadas se encuentran disponibles para verificación. Me comprometo a presentar el Reporte de Desempeño AOCA Impacto 360 dentro de los 30 días posteriores a la finalización del evento.</p>
+  <p class="decl-txt">🔒 Los datos declarados serán tratados de forma confidencial por AOCA Impacto 360 y utilizados exclusivamente para los fines de evaluación, seguimiento y comunicación institucional del programa.</p>
   <div class="firma-grid">
     <div class="field"><label>Nombre y apellido</label><input type="text" id="f_nom" placeholder="Nombre completo" oninput="guardarProgreso()"></div>
     <div class="field"><label>Cargo</label><input type="text" id="f_cargo" placeholder="Cargo en la organización" oninput="guardarProgreso()"></div>
@@ -394,7 +395,7 @@ const PILARES = [
   ]},
   { id:'SE', n:'Impactos Socioeconómicos', color:'#1565C0', tot:7, crit:[
     {id:'SE-01',t:'Se priorizó la contratación de proveedores locales del destino donde se realiza el evento.',f:'Planificar',e:'Lista de proveedores con origen geográfico.'},
-    {id:'SE-02',t:'El personal eventual del evento fue contratado bajo condiciones de trabajo formales o formalizables.',f:'Planificar/Ejecutar',e:'Contratos, recibos de sueldo, registros de AFIP.'},
+    {id:'SE-02',t:'El personal eventual del evento fue contratado bajo condiciones de trabajo formales o formalizables.',f:'Planificar/Ejecutar',e:'Contratos, constancias de AFIP y/o declaración jurada del empleador.'},
     {id:'SE-03',t:'El catering incluyó productos de temporada y/o de producción local o regional.',f:'Planificar',e:'Menú del evento con origen de ingredientes.'},
     {id:'SE-04',t:'Se gestionaron los excedentes alimentarios del evento de manera responsable.',f:'Planificar/Ejecutar',e:'Acuerdo con organización receptora, registro fotográfico.'},
     {id:'SE-05',t:'Se evaluó el impacto económico del evento en la comunidad receptora.',f:'Actuar',e:'Estimación incluida en el reporte de desempeño.'},
@@ -434,7 +435,7 @@ function guardarObservacion(pilarId, valor) {
 }
 
 // ── APPS SCRIPT ──────────────────────────────────────────────────────────────
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzLpacwOAzCkB54ALAibi0XC8DauogWnWOWBOA76-4iLTyMJsx0WOAAiaAdTrgO79SCLg/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwVmqFCAOIwXnCZK0IoiQfdnXDnDESv4R4qu23rrM6Rulw034pTHNrWqnqlibHcouq0/exec';
 const LS_KEY = 'aoca360_protocolo_v6';
 
 // ── PIN SCREEN ───────────────────────────────────────────────────────────────
@@ -637,7 +638,7 @@ function enviarFormulario() {
   const pct=((total/31)*100).toFixed(1),nivel=calcNivel(total,parseFloat(pct),pd),nivelNom=nivel==='lid'?'LIDERAZGO':nivel==='comp'?'COMPROMISO':nivel==='ini'?'INICIACIÓN':'Sin nivel';
   const archivos={};
   Object.entries(evidencias).forEach(([id,a])=>{if(a&&a.base64)archivos[id]={nombre:a.nombre,tipo:a.tipo,base64:a.base64};});
-  const payload={nombre,edicion,destino,org,resp,fecha,firmaNom,firmaCargo,firmOrg,firmFecha,puntajeTotal:total.toFixed(1),porcentajeTotal:pct+'%',nivel:nivelNom,pilarResumen:pilarResumen.join(' | '),p1_pct:pd['GS']?.pct.toFixed(0)+'%',p2_pct:pd['SE']?.pct.toFixed(0)+'%',p3_pct:pd['CI']?.pct.toFixed(0)+'%',p4_pct:pd['AM']?.pct.toFixed(0)+'%',obs_p1:observaciones['GS']||'',obs_p2:observaciones['SE']||'',obs_p3:observaciones['CI']||'',obs_p4:observaciones['AM']||'',detalle:JSON.stringify(detalleCrit),archivos:JSON.stringify(archivos),timestamp:new Date().toISOString()};
+  const payload={tipo_actor:'PROTOCOLO',nombre,edicion,destino,org,resp,fecha,firmaNom,firmaCargo,firmOrg,firmFecha,puntajeTotal:total.toFixed(1),porcentajeTotal:pct+'%',nivel:nivelNom,pilarResumen:pilarResumen.join(' | '),p1_pct:pd['GS']?.pct.toFixed(0)+'%',p2_pct:pd['SE']?.pct.toFixed(0)+'%',p3_pct:pd['CI']?.pct.toFixed(0)+'%',p4_pct:pd['AM']?.pct.toFixed(0)+'%',obs_p1:observaciones['GS']||'',obs_p2:observaciones['SE']||'',obs_p3:observaciones['CI']||'',obs_p4:observaciones['AM']||'',detalle:JSON.stringify(detalleCrit),archivos:JSON.stringify(archivos),timestamp:new Date().toISOString()};
   const btn=document.getElementById('btnEnviar');btn.textContent='⏳ Enviando...';btn.classList.add('sending');btn.disabled=true;
   fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
   .then(()=>{btn.textContent='✓ Enviado';btn.classList.remove('sending');btn.classList.add('sent');document.getElementById('sendOk').classList.add('vis');try{localStorage.removeItem(LS_KEY);}catch(e){}})
