@@ -29,7 +29,6 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
 .header-logo-bar{background:#fff;border-bottom:1px solid #E0E8F0;padding:18px 20px}
 .header-logo-inner{max-width:780px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
 .logo-img{height:112px;width:auto;display:block}
-.header-tag{font-size:12px;font-weight:700;color:#1D4ED8;background:#EFF6FF;border:1px solid #BFDBFE;padding:6px 14px;border-radius:20px;letter-spacing:0.04em}
 .header-sub-bar{background:#0D1B4B;padding:8px 20px}
 .header-sub-inner{max-width:780px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .header-sub{font-size:12px;color:rgba(255,255,255,0.65);letter-spacing:0.04em;font-weight:500}
@@ -56,10 +55,6 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
 .intro-t{font-size:24px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:9px}
 .intro-t em{font-style:normal;color:#60A5FA}
 .intro-p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.65}
-.bonus-card{background:#fff;border:2px solid #FDE68A;border-radius:14px;padding:16px 20px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px}
-.bonus-ico{font-size:26px;flex-shrink:0}
-.bonus-t{font-size:13px;font-weight:800;color:#92400E;margin-bottom:3px}
-.bonus-d{font-size:12px;color:#78350F;line-height:1.55}
 .sect-lbl{font-size:11px;font-weight:800;color:#4B6080;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .sect-lbl::before{content:"";width:16px;height:2px;background:#2563EB;border-radius:2px}
 .niveles-ref{background:#fff;border-radius:14px;border:1.5px solid #DBEAFE;padding:18px 20px;margin-bottom:24px}
@@ -149,7 +144,7 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
 .btn-p{background:#1E3A8A;color:#fff;border:none;border-radius:10px;padding:13px 28px;font-size:14px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s;box-shadow:0 4px 12px rgba(30,58,138,.3);font-family:inherit}
 .btn-p:hover{background:#0D1B4B;transform:translateY(-1px)}
-.btn-p.sending{background:#6B82A7;cursor:wait}
+.btn-p.sending{background:#6B82A7;cursor:wait}.btn-p.sent{background:#1E3A8A}
 .btn-s{background:#fff;color:#1E3A8A;border:2px solid #1D4ED8;border-radius:10px;padding:11px 22px;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;font-family:inherit}
 .btn-s:hover{background:#EFF6FF}
 .send-ok{display:none;margin-top:14px;background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:12px;padding:14px 18px;font-size:13px;color:#166534;font-weight:600;text-align:center;line-height:1.6}
@@ -173,7 +168,7 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
 @media print{
   .header{position:static}.score-bar{position:static}
   .pilar-body{display:block!important}.pilar-chev{display:none}
-  .actions,.btn-p,.btn-s{display:none!important}
+  .actions,.btn-p,.btn-s,.ev-btn{display:none!important}
   body{background:#fff}
 }
 </style>
@@ -189,7 +184,7 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
     <div class="pin-actor">🏢 Venue / Recinto</div>
     <div class="pin-sub">Ingresá tu clave de acceso para continuar</div>
     <div class="pin-input-wrap">
-      <input class="pin-input" type="password" id="pinInput" placeholder="· · · · ·" maxlength="20" onkeydown="if(event.key==='Enter')checkPin()">
+      <input class="pin-input" type="password" id="pinInput" placeholder="· · · · ·" maxlength="50" onkeydown="if(event.key==='Enter')checkPin()">
       <button class="pin-toggle" onclick="togglePinVis()" id="pinToggle">👁</button>
     </div>
     <button class="pin-btn" onclick="checkPin()">Ingresar →</button>
@@ -216,7 +211,7 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
   <div class="score-bar-inner">
     <div style="display:flex;align-items:baseline;gap:6px">
       <span class="score-num" id="scoreNum">0.0</span>
-      <span class="score-denom">/ 21 pts</span>
+      <span class="score-denom">/ 22 pts</span>
     </div>
     <span class="score-pct" id="scorePct">0%</span>
     <div class="nivel-pill n-none" id="nivelPill"><span id="nIco">—</span>&nbsp;<span id="nTxt">Sin nivel</span></div>
@@ -227,24 +222,22 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
 <div class="intro">
   <div class="intro-eyebrow">Ecosistema AOCA Impacto 360 · Etapa 2</div>
   <h1 class="intro-t">Registro <em>Venue AOCA Impacto 360</em></h1>
-  <p class="intro-p">Completá los 21 criterios organizados en 4 pilares para obtener tu registro como Venue verificado del Ecosistema AOCA Impacto 360. El sistema calcula tu nivel (Inicial / Intermedio / Avanzado) en tiempo real según el puntaje acumulado total.</p>
-</div>
-
+  <p class="intro-p">Completá los 22 criterios organizados en 4 pilares para obtener tu registro como Venue verificado del Ecosistema AOCA Impacto 360. El sistema calcula tu nivel (90° Bronce / 180° Plata / 360° Oro) en tiempo real según el puntaje acumulado total. El resultado es una estimación a partir de tu autoevaluación: el nivel definitivo lo determina la auditoría externa.</p>
 </div>
 
 <div class="niveles-ref">
   <div class="sect-lbl">Niveles de Registro</div>
-  <div class="nref"><span class="nref-ico">🔵</span><div><div class="nref-t">Inicial — ≥ 40% (≥ 8.4 pts)</div><div class="nref-d">Sin mínimo por pilar. Primer ingreso al Registro AOCA Impacto 360. Logo 'Inicial AOCA Impacto 360'.</div></div></div>
-  <div class="nref"><span class="nref-ico">🟢</span><div><div class="nref-t">Intermedio — ≥ 65% (≥ 13.7 pts)</div><div class="nref-d">Registro destacado en el Directorio AOCA Impacto 360.</div></div></div>
-  <div class="nref"><span class="nref-ico">🟡</span><div><div class="nref-t">Avanzado — ≥ 85% (≥ 17.9 pts)</div><div class="nref-d">Máxima visibilidad en el Registro. Candidatura a la Distinción Nacional.</div></div></div>
+  <div class="nref"><span class="nref-ico">🥉</span><div><div class="nref-t">90° Bronce — ≥ 40% (≥ 8.8 pts)</div><div class="nref-d">Sin mínimo por pilar. Primer ingreso al Registro AOCA Impacto 360. Logo '90° Bronce AOCA Impacto 360'.</div></div></div>
+  <div class="nref"><span class="nref-ico">🥈</span><div><div class="nref-t">180° Plata — ≥ 65% (≥ 14.3 pts) + mín. 50% por pilar</div><div class="nref-d">Visibilidad destacada en el Registro AOCA Impacto 360.</div></div></div>
+  <div class="nref"><span class="nref-ico">🥇</span><div><div class="nref-t">360° Oro — ≥ 85% (≥ 18.7 pts) + mín. 75% por pilar</div><div class="nref-d">Máxima visibilidad en el Registro. Candidatura al Distintivo Nacional.</div></div></div>
 </div>
 
 <div class="sect-lbl" style="margin-bottom:14px">Datos del Venue</div>
 <div class="datos-grid">
-  <div class="field"><label>Nombre del venue / recinto</label><input type="text" id="d_nombre" placeholder="Nombre oficial del espacio" oninput="guardarProgreso()"></div>
-  <div class="field"><label>Ciudad / Provincia</label><input type="text" id="d_ciudad" placeholder="Ej: Mendoza, Mendoza" oninput="guardarProgreso()"></div>
-  <div class="field"><label>Nombre del responsable</label><input type="text" id="d_resp" placeholder="Nombre y apellido" oninput="guardarProgreso()"></div>
-  <div class="field"><label>Email de contacto</label><input type="email" id="d_email" placeholder="email@venue.com.ar" oninput="guardarProgreso()"></div>
+  <div class="field"><label>Nombre del venue / recinto</label><input type="text" id="d_nombre" placeholder="Nombre oficial del espacio" oninput="guardarProgreso()" maxlength="150"></div>
+  <div class="field"><label>Ciudad / Provincia</label><input type="text" id="d_ciudad" placeholder="Ej: Mendoza, Mendoza" oninput="guardarProgreso()" maxlength="150"></div>
+  <div class="field"><label>Nombre del responsable</label><input type="text" id="d_resp" placeholder="Nombre y apellido" oninput="guardarProgreso()" maxlength="150"></div>
+  <div class="field"><label>Email de contacto</label><input type="email" id="d_email" placeholder="email@venue.com.ar" oninput="guardarProgreso()" maxlength="150"></div>
   <div class="field">
     <label>¿Es socio/a de AOCA?</label>
     <select id="d_socio" onchange="guardarProgreso()">
@@ -254,7 +247,7 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
     </select>
   </div>
   <div class="field"><label>Fecha de presentación</label><input type="date" id="d_fecha" oninput="guardarProgreso()"></div>
-  <div class="field field-full"><label>Certificación ambiental vigente (si aplica)</label><input type="text" id="d_cert" placeholder="Ej: Green Key, ISO 14001, IRAM-SECTUR — o dejar en blanco" oninput="guardarProgreso()"></div>
+  <div class="field field-full"><label>Certificación ambiental vigente (si aplica)</label><input type="text" id="d_cert" placeholder="Ej: Green Key, ISO 14001, IRAM-SECTUR — o dejar en blanco" oninput="guardarProgreso()" maxlength="150"></div>
 </div>
 
 <div class="sect-lbl" style="margin-bottom:16px">Criterios de Registro</div>
@@ -285,17 +278,17 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
   <div class="sect-lbl" style="margin-bottom:10px">Información adicional</div>
   <div class="field">
     <label>Prácticas sostenibles adicionales del venue</label>
-    <textarea class="adicional-area" id="d_adicional" placeholder="Describí iniciativas o prácticas que no estén cubiertas por los criterios anteriores..." oninput="guardarProgreso()"></textarea>
+    <textarea class="adicional-area" id="d_adicional" placeholder="Describí iniciativas o prácticas que no estén cubiertas por los criterios anteriores..." oninput="guardarProgreso()" maxlength="400"></textarea>
   </div>
 </div>
 
 <div class="decl-card">
   <div class="sect-lbl">Declaración</div>
-  <p class="decl-txt">Declaro que la información consignada en este formulario es veraz y que cuento con evidencias disponibles para respaldarla ante requerimiento de la Secretaría Técnica AOCA Impacto 360. Entiendo que el registro tiene vigencia de 12 meses y que podré renovarlo en cualquier momento.</p>
+  <p class="decl-txt">Declaro que la información consignada en este formulario es veraz y que cuento con evidencias disponibles para respaldarla ante requerimiento de la Secretaría Técnica AOCA Impacto 360. Entiendo que el registro tiene vigencia de 12 meses y que podré renovarlo en cualquier momento. Esta declaración tiene carácter de declaración jurada.</p>
   <p class="decl-txt">🔒 Los datos declarados serán tratados de forma confidencial por AOCA Impacto 360 y utilizados exclusivamente para los fines de evaluación, seguimiento y comunicación institucional del programa.</p><div class="firma-grid">
-    <div class="field"><label>Nombre y apellido</label><input type="text" id="f_nom" placeholder="Nombre completo" oninput="guardarProgreso()"></div>
-    <div class="field"><label>Cargo</label><input type="text" id="f_cargo" placeholder="Cargo en el venue" oninput="guardarProgreso()"></div>
-    <div class="field"><label>Organización / Venue</label><input type="text" id="f_org2" placeholder="Nombre del venue" oninput="guardarProgreso()"></div>
+    <div class="field"><label>Nombre y apellido</label><input type="text" id="f_nom" placeholder="Nombre completo" oninput="guardarProgreso()" maxlength="150"></div>
+    <div class="field"><label>Cargo</label><input type="text" id="f_cargo" placeholder="Cargo en el venue" oninput="guardarProgreso()" maxlength="150"></div>
+    <div class="field"><label>Organización / Venue</label><input type="text" id="f_org2" placeholder="Nombre del venue" oninput="guardarProgreso()" maxlength="150"></div>
     <div class="field"><label>Fecha de firma</label><input type="date" id="f_fecha" oninput="guardarProgreso()"></div>
   </div>
 </div>
@@ -314,46 +307,88 @@ body{background:#F4F7FB;color:#1A2035;font-family:-apple-system,BlinkMacSystemFo
 
 </div>
 <script>
-const PIN_DEMO='aoca360demo', PIN_OP='aoca360';
-function checkPin(){const v=document.getElementById('pinInput').value.trim();if(v===PIN_DEMO||v===PIN_OP){document.getElementById('pin-screen').classList.add('hidden');document.getElementById('pinInput').value='';}else{const e=document.getElementById('pinError');e.classList.add('vis');document.getElementById('pinInput').value='';setTimeout(()=>e.classList.remove('vis'),3000);}}
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw73_TjRjfpZbS_6eVdHpIvCNVLTs-cuhnTzWwYC6cG7CFZulrdh8p2uNdVL9xGrPUTLg/exec';
+let claveActiva = '';
+
+function checkPin() {
+  const inp = document.getElementById('pinInput');
+  const val = inp.value.trim();
+  if (!val) {
+    inp.focus();
+    return;
+  }
+  const btn = document.querySelector('.pin-btn');
+  const err = document.getElementById('pinError');
+  if (btn) { btn.disabled = true; btn.textContent = 'Verificando...'; }
+
+  fetch(`${APPS_SCRIPT_URL}?action=validarPin&pin=${encodeURIComponent(val)}`)
+    .then(res => res.json())
+    .then(data => {
+      if (btn) { btn.disabled = false; btn.textContent = 'Ingresar →'; }
+      if (data.ok) {
+        claveActiva = val;
+        document.getElementById('pin-screen').classList.add('hidden');
+        inp.value = '';
+        if (data.empresa && document.getElementById('d_nombre') && !document.getElementById('d_nombre').value) {
+          document.getElementById('d_nombre').value = data.empresa;
+        }
+        if (data.email && document.getElementById('d_email') && !document.getElementById('d_email').value) {
+          document.getElementById('d_email').value = data.email;
+        }
+      } else {
+        err.textContent = data.error || 'Clave incorrecta. Verificá e intentá de nuevo.';
+        err.classList.add('vis');
+        inp.value = '';
+        inp.focus();
+        setTimeout(() => err.classList.remove('vis'), 4000);
+      }
+    })
+    .catch(() => {
+      if (btn) { btn.disabled = false; btn.textContent = 'Ingresar →'; }
+      err.textContent = 'Error al conectar con el servidor. Verificá tu conexión.';
+      err.classList.add('vis');
+      setTimeout(() => err.classList.remove('vis'), 4000);
+    });
+}
+
 function togglePinVis(){const i=document.getElementById('pinInput'),b=document.getElementById('pinToggle');if(i.type==='password'){i.type='text';b.textContent='🙈';}else{i.type='password';b.textContent='👁';}}
 
 const PILARES=[
-  {id:'GS',n:'Gestión Sostenible',color:'#064E3B',tot:5,crit:[
+  {id:'GS',n:'Gestión Sostenible',color:'#064E3B',tot:7,crit:[
     {id:'V-GS-01',t:'Política de sostenibilidad del venue documentada y vigente.',e:'Política escrita, aprobada por dirección, con fecha de vigencia.'},
     {id:'V-GS-02',t:'Designación de un/a responsable de sostenibilidad en el venue.',e:'Descripción del cargo o comunicación interna de designación.'},
     {id:'V-GS-03',t:'Capacitación en sostenibilidad para el personal del venue (al menos una vez al año).',e:'Registros de capacitación, programa, asistencia.'},
     {id:'V-GS-04',t:'Reporte anual de desempeño sostenible publicado o disponible para clientes.',e:'Reporte publicado en web o disponible bajo solicitud.'},
     {id:'V-GS-05',t:'El venue cuenta con un Manual de Eventos Sostenibles para organizadores que usan el espacio.',e:'Manual disponible y accesible al contratar el espacio.'},
+    {id:'V-GS-06',t:'Certificación ambiental o de calidad nacional o internacional vigente (SACT, IRAM-SECTUR, Green Key, ISO 14001 u otra).',e:'Copia del certificado vigente.'},
+    {id:'V-GS-07',t:'Política de proveedores responsables: criterios de sostenibilidad en la contratación.',e:'Política escrita o criterios incluidos en briefings de contratación.'},
   ]},
   {id:'SE',n:'Impactos Socioeconómicos',color:'#1E3A8A',tot:4,crit:[
     {id:'V-SE-01',t:'Política de contratación que prioriza proveedores locales para la operación del venue.',e:'Política escrita o criterios incluidos en briefings de contratación.'},
     {id:'V-SE-02',t:'Condiciones laborales formales para todo el personal propio y eventual del venue.',e:'Contratos, constancias de AFIP y/o declaración jurada del empleador.'},
     {id:'V-SE-03',t:'El venue ofrece sus espacios a organizaciones de la comunidad (uso solidario o a precio operativo).',e:'Política o programa documentado, registro de cesiones realizadas.'},
-    {id:'V-SE-04',t:'Política de inclusión laboral activa (personas con discapacidad, neurodiversidad u otros grupos).',e:'Política interna, registros de contratación inclusiva, adhesión a iniciativas externas.'},
+    {id:'V-SE-04',t:'Registro de los costos de energía, agua y residuos del venue y de los ahorros logrados por las medidas de eficiencia, con metas anuales.',e:'Registro mensual de costos de los últimos 12 meses (expresado por mes o por m²), ahorros estimados por medida y metas anuales documentadas.'},
   ]},
   {id:'CI',n:'Impactos Socio-Culturales',color:'#4C1D95',tot:4,crit:[
     {id:'V-CI-01',t:'Accesibilidad universal verificada: rampa, baño adaptado, circulación sin barreras.',e:'Checklist de accesibilidad completado, fotografías.'},
     {id:'V-CI-02',t:'Manual o protocolo de buenas prácticas de accesibilidad disponible para organizadores y asistentes.',e:'Manual accesible al contratar el espacio, disponible en web.'},
     {id:'V-CI-03',t:'El venue cuenta con señalética inclusiva (visual, táctil o sonora) en sus espacios.',e:'Fotografías, descripción del sistema de señalética.'},
-    {id:'V-CI-04',t:'Certificación ambiental o de calidad nacional o internacional vigente (SACT, IRAM-SECTUR, Green Key, ISO 14001 u otra).',e:'Copia del certificado vigente.'},
+    {id:'V-CI-04',t:'Política de inclusión laboral implementada (personas con discapacidad, neurodiversidad u otros grupos).',e:'Política interna y registros de contratación o prácticas inclusivas del último año.'},
   ]},
-  {id:'AM',n:'Impactos Ambientales y Gestión Eficiente de Recursos',color:'#78350F',tot:8,crit:[
-    {id:'V-AM-01',t:'Sistema de gestión de residuos activo: separación diferenciada en al menos 3 categorías.',e:'Fotografías, procedimiento escrito, contratos con operadores de residuos.'},
-    {id:'V-AM-02',t:'Política activa de eficiencia energética (LED, sensores, aprovechamiento de luz natural, BMS o equivalente).',e:'Facturas de energía, descripción de medidas, certificación ambiental.'},
-    {id:'V-AM-03',t:'Gestión responsable del agua (dispositivos de ahorro, doble disparo, monitoreo o plan documentado).',e:'Descripción de dispositivos instalados, facturas o plan de mejora.'},
-    {id:'V-AM-04',t:'Eliminación o reducción significativa de plásticos de un solo uso en la operación del venue.',e:'Lista de materiales utilizados, fotografías, política documentada.'},
-    {id:'V-AM-05',t:'Política de proveedores responsables: criterios de sostenibilidad en la contratación.',e:'Política escrita o criterios incluidos en briefings de contratación.'},
-    {id:'V-AM-06',t:'Medición del consumo energético y/o huella de carbono del venue.',e:'Informes de consumo, cálculo de huella, certificaciones.'},
-    {id:'V-AM-07',t:'El venue promueve el acceso en transporte sostenible (información activa sobre transporte público, bicicletas, subte u otras alternativas).',e:'Información publicada en web, materiales para organizadores.'},
-    {id:'V-AM-08',t:'Política de gestión de excedentes alimentarios: donación o rescate de alimentos de eventos realizados en el venue.',e:'Acuerdos con organizaciones receptoras, registros de donaciones.'},
+  {id:'AM',n:'Impactos Ambientales y Gestión Eficiente de Recursos',color:'#78350F',tot:7,crit:[
+    {id:'V-AM-01',t:'Sistema de gestión de residuos implementado: separación diferenciada en al menos 3 categorías.',e:'Fotografías, procedimiento escrito, contratos con operadores de residuos.'},
+    {id:'V-AM-02',t:'Medidas de eficiencia energética implementadas (LED, sensores, aprovechamiento de luz natural, BMS o equivalente).',e:'Facturas de energía del último año y descripción o fotografías de las medidas, o certificación ambiental.'},
+    {id:'V-AM-03',t:'Gestión responsable del agua (dispositivos de ahorro, doble disparo, monitoreo o plan documentado).',e:'Descripción de dispositivos instalados y facturas de agua del último año, o plan de mejora documentado.'},
+    {id:'V-AM-04',t:'Eliminación o sustitución verificable de plásticos de un solo uso en la operación del venue (botellas de agua individuales, vasos, cubiertos, sorbetes y envases), priorizando el reuso.',e:'Política o procedimiento de compras, fotografías fechadas de los servicios y lista de control de verificación. Si se usan sustitutos compostables: certificación o destino de compostaje verificable.'},
+    {id:'V-AM-05',t:'Medición del consumo energético (kWh) y/o de la huella de carbono del venue.',e:'Informes de consumo, cálculo de huella, certificaciones.'},
+    {id:'V-AM-06',t:'El venue informa a organizadores y asistentes sobre alternativas de transporte sostenible (transporte público, bicicletas, subte u otras).',e:'Información publicada en web, materiales para organizadores.'},
+    {id:'V-AM-07',t:'Política de gestión de excedentes alimentarios: donación o rescate de alimentos de eventos realizados en el venue.',e:'Acuerdos con organizaciones receptoras, registros de donaciones.'},
   ]},
 ];
 
-const TOTAL_CRIT=21;
+const TOTAL_CRIT=22;
 const estado={}, evidencias={};
 PILARES.forEach(p=>p.crit.forEach(c=>{estado[c.id]=null;}));const observaciones={};PILARES.forEach(p=>{observaciones[p.id]='';});function guardarObservacion(pilarId,valor){observaciones[pilarId]=valor;guardarProgreso();}
-const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbwVmqFCAOIwXnCZK0IoiQfdnXDnDESv4R4qu23rrM6Rulw034pTHNrWqnqlibHcouq0/exec';
 const LS_KEY='aoca360_venue_v3';
 
 function renderPilares(){
@@ -361,23 +396,37 @@ function renderPilares(){
   PILARES.forEach((p,pi)=>{
     const div=document.createElement('div');
     div.className='pilar-block open';div.id='pb-'+p.id;
-    div.innerHTML=`<div class="pilar-hdr" style="background:linear-gradient(135deg,${p.color},${p.color}DD)" onclick="toggleP('${p.id}')"><div class="pilar-hdr-l"><span class="pilar-badge">P${pi+1}</span><span class="pilar-name">${p.n}</span></div><div style="display:flex;align-items:center;gap:6px"><span class="pilar-score" id="ps-${p.id}">0 / ${p.tot}</span><span class="pilar-chev">▼</span></div></div><div class="pilar-body">${p.crit.map(c=>`<div class="crit" id="c-${c.id}"><div><div class="crit-id">${c.id}</div><div class="crit-txt">${c.t}</div><div class="crit-meta"><span class="ev-hint">📋 ${c.e}</span></div><button class="ev-btn" id="evb-${c.id}" onclick="document.getElementById('evf-${c.id}').click()">📎 Adjuntar evidencia</button><input class="ev-file-input" type="file" id="evf-${c.id}" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx" onchange="archivoSeleccionado('${c.id}',this)"><div class="ev-file-preview" id="evp-${c.id}"><span>📄</span><span class="ev-file-name" id="evn-${c.id}"></span><button class="ev-file-remove" onclick="quitarArchivo('${c.id}')">✕</button></div></div><div class="crit-ctrl"><div class="opciones"><button class="op-btn" id="bs-${c.id}" onclick="set('${c.id}','si')" title="Implementado — 1 pt">✓</button><button class="op-btn" id="bm-${c.id}" onclick="set('${c.id}','med')" title="En proceso — 0.5 pts">◑</button><button class="op-btn" id="bn-${c.id}" onclick="set('${c.id}','no')" title="No aplica — 0 pts">✗</button></div><span class="pts-tag" id="pt-${c.id}">— pts</span></div></div>`).join('')}<div class="obs-block"><div class="obs-label">📝 Observaciones del pilar</div><textarea class="obs-textarea" id="obs-${p.id}" placeholder="Comentarios, aclaraciones o contexto adicional sobre este pilar (opcional)..." oninput="guardarObservacion('${p.id}', this.value)"></textarea></div></div>`;
+    div.innerHTML=`<div class="pilar-hdr" style="background:linear-gradient(135deg,${p.color},${p.color}DD)" onclick="toggleP('${p.id}')"><div class="pilar-hdr-l"><span class="pilar-badge">P${pi+1}</span><span class="pilar-name">${p.n}</span></div><div style="display:flex;align-items:center;gap:6px"><span class="pilar-score" id="ps-${p.id}">0 / ${p.tot}</span><span class="pilar-chev">▼</span></div></div><div class="pilar-body">${p.crit.map(c=>`<div class="crit" id="c-${c.id}"><div><div class="crit-id">${c.id}</div><div class="crit-txt">${c.t}</div><div class="crit-meta"><span class="ev-hint">📋 ${c.e}</span></div><button class="ev-btn" id="evb-${c.id}" onclick="document.getElementById('evf-${c.id}').click()">📎 Adjuntar evidencia</button><input class="ev-file-input" type="file" id="evf-${c.id}" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.xlsx" onchange="archivoSeleccionado('${c.id}',this)"><div class="ev-file-preview" id="evp-${c.id}"><span>📄</span><span class="ev-file-name" id="evn-${c.id}"></span><button class="ev-file-remove" onclick="quitarArchivo('${c.id}')">✕</button></div></div><div class="crit-ctrl"><div class="opciones"><button class="op-btn" id="bs-${c.id}" onclick="set('${c.id}','si')" title="Implementado — 1 pt">✓</button><button class="op-btn" id="bm-${c.id}" onclick="set('${c.id}','med')" title="En proceso — 0.5 pts">◑</button><button class="op-btn" id="bn-${c.id}" onclick="set('${c.id}','no')" title="No aplica — 0 pts">✗</button></div><span class="pts-tag" id="pt-${c.id}">— pts</span></div></div>`).join('')}<div class="obs-block"><div class="obs-label">📝 Observaciones del pilar</div><textarea class="obs-textarea" id="obs-${p.id}" maxlength="400" placeholder="Comentarios, aclaraciones o contexto adicional sobre este pilar (opcional)..." oninput="guardarObservacion('${p.id}', this.value)"></textarea></div></div>`;
     cont.appendChild(div);
   });
 }
 function toggleP(id){document.getElementById('pb-'+id).classList.toggle('open');}
 
-function archivoSeleccionado(id,input){
-  const file=input.files[0];if(!file)return;
-  if(file.size>4*1024*1024){alert('El archivo supera el límite de 4MB.');input.value='';return;}
-  const reader=new FileReader();
-  reader.onload=e=>{
-    evidencias[id]={nombre:file.name,tipo:file.type,base64:e.target.result.split(',')[1]};
-    const btn=document.getElementById('evb-'+id);
-    btn.textContent='📎 '+(file.name.length>22?file.name.substring(0,22)+'...':file.name);
+function archivoSeleccionado(id, input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 4 * 1024 * 1024) {
+    alert('El archivo supera el límite individual de 4MB.');
+    input.value = '';
+    return;
+  }
+  let totalBytes = 0;
+  for (const [k, ev] of Object.entries(evidencias)) {
+    if (k !== id && ev && ev.size) totalBytes += ev.size;
+  }
+  if (totalBytes + file.size > 15 * 1024 * 1024) {
+    alert('El tamaño total acumulado de archivos adjuntos supera los 15MB. Por favor seleccioná un archivo más liviano o quitá alguna otra evidencia.');
+    input.value = '';
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = e => {
+    evidencias[id] = { nombre: file.name, tipo: file.type || 'application/octet-stream', size: file.size, base64: e.target.result.split(',')[1] };
+    const btn = document.getElementById('evb-' + id);
+    btn.textContent = '📎 ' + (file.name.length > 22 ? file.name.substring(0, 22) + '...' : file.name);
     btn.classList.add('cargada');
-    document.getElementById('evn-'+id).textContent=file.name+' ('+(file.size/1024).toFixed(0)+' KB)';
-    document.getElementById('evp-'+id).classList.add('vis');
+    document.getElementById('evn-' + id).textContent = file.name + ' (' + (file.size / 1024).toFixed(0) + ' KB)';
+    document.getElementById('evp-' + id).classList.add('vis');
   };
   reader.readAsDataURL(file);
 }
@@ -414,26 +463,26 @@ function recalc(){
   const pct=(total/TOTAL_CRIT)*100;
   document.getElementById('scoreNum').textContent=total.toFixed(1);
   document.getElementById('scorePct').textContent=pct.toFixed(0)+'%';
-  const nivel=calcNivel(pct);
-  updateNivelPill(nivel);updateNivelRes(nivel,total,pct);
+  const nivel=calcNivel(pct,pd);
+  updateNivelPill(nivel);updateNivelRes(nivel,total,pct);const byPct=pct>=85?'avz':pct>=65?'int':pct>=40?'ini':'none';if(byPct!==nivel){const mn=byPct==='avz'?75:50;const low=PILARES.filter(p=>pd[p.id].pct<mn-1e-9).map(p=>p.n);const rd=document.getElementById('rD');if(rd)rd.textContent+=' Tu puntaje total alcanzaría el nivel superior, pero falta el mínimo de '+mn+'% en: '+low.join(', ')+'.';}
   updateMini(pd);updateCards(pd);updateTable(pd,total);
 }
-function calcNivel(pct){if(pct>=85)return'avz';if(pct>=65)return'int';if(pct>=40)return'ini';return'none';}
+function calcNivel(pct,pd){const pv=Object.values(pd||{});const minP=pv.length?Math.min(...pv.map(p=>p.pct)):100;if(pct>=85&&minP>=75-1e-9)return'avz';if(pct>=65&&minP>=50-1e-9)return'int';if(pct>=40)return'ini';return'none';}
 function updateNivelPill(n){
   const pill=document.getElementById('nivelPill'),ico=document.getElementById('nIco'),txt=document.getElementById('nTxt');
   pill.className='nivel-pill';
-  if(n==='avz'){pill.classList.add('n-avz');ico.textContent='🟡';txt.textContent='AVANZADO';}
-  else if(n==='int'){pill.classList.add('n-int');ico.textContent='🟢';txt.textContent='INTERMEDIO';}
-  else if(n==='ini'){pill.classList.add('n-ini');ico.textContent='🔵';txt.textContent='INICIAL';}
+  if(n==='avz'){pill.classList.add('n-avz');ico.textContent='🥇';txt.textContent='360° ORO';}
+  else if(n==='int'){pill.classList.add('n-int');ico.textContent='🥈';txt.textContent='180° PLATA';}
+  else if(n==='ini'){pill.classList.add('n-ini');ico.textContent='🥉';txt.textContent='90° BRONCE';}
   else{pill.classList.add('n-none');ico.textContent='—';txt.textContent='Sin nivel';}
 }
 function updateNivelRes(n,total,pct){
   const el=document.getElementById('nivelRes'),rI=document.getElementById('rIco'),rT=document.getElementById('rT'),rD=document.getElementById('rD');
   el.className='nivel-res';
-  if(n==='avz'){el.classList.add('avz');rI.textContent='🟡';rT.textContent='NIVEL AVANZADO';rD.textContent=`Puntaje: ${total.toFixed(1)} / 21 pts (${pct.toFixed(0)}%). Máxima visibilidad en el Registro. Candidatura a la Distinción Nacional.`;}
-  else if(n==='int'){el.classList.add('int');rI.textContent='🟢';rT.textContent='NIVEL INTERMEDIO';rD.textContent=`Puntaje: ${total.toFixed(1)} / 21 pts (${pct.toFixed(0)}%). Registro destacado en el Directorio AOCA Impacto 360.`;}
-  else if(n==='ini'){el.classList.add('ini');rI.textContent='🔵';rT.textContent='NIVEL INICIAL';rD.textContent=`Puntaje: ${total.toFixed(1)} / 21 pts (${pct.toFixed(0)}%). Primer nivel alcanzado. Ingreso al Registro AOCA Impacto 360.`;}
-  else{rI.textContent='⬇';rT.textContent='Por debajo del umbral';rD.textContent=`Puntaje: ${total.toFixed(1)} / 21 pts (${pct.toFixed(0)}%). Necesitás ${Math.max(0,(8.4-total)).toFixed(1)} pts más para el Nivel Inicial.`;}
+  if(n==='avz'){el.classList.add('avz');rI.textContent='🥇';rT.textContent='360° ORO · ESTIMADO';rD.textContent=`Puntaje: ${total.toFixed(1)} / 22 pts (${pct.toFixed(0)}%). Máxima visibilidad en el Registro. Candidatura al Distintivo Nacional.`;}
+  else if(n==='int'){el.classList.add('int');rI.textContent='🥈';rT.textContent='180° PLATA · ESTIMADO';rD.textContent=`Puntaje: ${total.toFixed(1)} / 22 pts (${pct.toFixed(0)}%). Visibilidad destacada en el Registro AOCA Impacto 360.`;}
+  else if(n==='ini'){el.classList.add('ini');rI.textContent='🥉';rT.textContent='90° BRONCE · ESTIMADO';rD.textContent=`Puntaje: ${total.toFixed(1)} / 22 pts (${pct.toFixed(0)}%). Primer nivel alcanzado. Ingreso al Registro AOCA Impacto 360.`;}
+  else{rI.textContent='⬇';rT.textContent='Por debajo del umbral';rD.textContent=`Puntaje: ${total.toFixed(1)} / 22 pts (${pct.toFixed(0)}%). Necesitás ${Math.max(0,(8.8-total)).toFixed(1)} pts más para el nivel 90° Bronce.`;}
 }
 function updateMini(pd){
   const c=document.getElementById('pilaresBar');
@@ -462,21 +511,82 @@ function recuperarProgreso(){
 }
 
 function enviarFormulario(){
+  if (!claveActiva) {
+    alert('Sesión no autorizada. Por favor recargá la página e ingresá tu clave.');
+    return;
+  }
   const nombre=document.getElementById('d_nombre').value.trim();
   if(!nombre){alert('Por favor completá el nombre del venue antes de enviar.');document.getElementById('d_nombre').focus();return;}
+  
+  const respVal = document.getElementById('d_resp') ? document.getElementById('d_resp').value.trim() : '';
+  if (!respVal) {
+    alert('Por favor completá el nombre del responsable antes de enviar.');
+    if (document.getElementById('d_resp')) document.getElementById('d_resp').focus();
+    return;
+  }
+  const emailEl = document.getElementById('d_email');
+  if (emailEl) {
+    const emailVal = emailEl.value.trim();
+    if (!emailVal || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      alert('Por favor ingresá un correo electrónico válido de contacto (ejemplo: contacto@empresa.com).');
+      emailEl.focus();
+      return;
+    }
+  }
+  const firmaNomVal = document.getElementById('f_nom') ? document.getElementById('f_nom').value.trim() : '';
+  const firmaCargoVal = document.getElementById('f_cargo') ? document.getElementById('f_cargo').value.trim() : '';
+  if (!firmaNomVal || !firmaCargoVal) {
+    alert('Por favor completá los datos de la Declaración Jurada (Nombre y Cargo de quien firma) al pie del formulario.');
+    if (!firmaNomVal && document.getElementById('f_nom')) document.getElementById('f_nom').focus();
+    else if (!firmaCargoVal && document.getElementById('f_cargo')) document.getElementById('f_cargo').focus();
+    return;
+  }
+  let sinMarcar = 0;
+  PILARES.forEach(p => p.crit.forEach(c => { if (estado[c.id] === null || estado[c.id] === undefined) sinMarcar++; }));
+  if (sinMarcar > 0 && !confirm(`Tenés ${sinMarcar} criterios sin responder (sumarán 0 puntos). ¿Querés enviar el formulario de todas formas?`)) {
+    return;
+  }
   let total=0;const pd={},pilarRes=[],detalle={};
-  PILARES.forEach(p=>{let pp=0,si=0,med=0;const cd={};p.crit.forEach(c=>{const v=estado[c.id];pp+=pts(v);if(v==='si')si++;else if(v==='med')med++;cd[c.id]={estado:v==='si'?'Implementado':v==='med'?'En proceso':v==='no'?'No aplica':'Sin marcar',pts:pts(v)};});total+=pp;pd[p.id]={pts:pp,tot:p.tot,pct:(pp/p.tot)*100};pilarRes.push(p.n+': '+pp.toFixed(1)+'/'+p.tot+' ('+(((pp/p.tot)*100).toFixed(0))+'%)');detalle[p.id]=cd;});
-  const pct=((total/TOTAL_CRIT)*100).toFixed(1),nivel=calcNivel(parseFloat(pct)),nivelNom=nivel==='avz'?'AVANZADO':nivel==='int'?'INTERMEDIO':nivel==='ini'?'INICIAL':'Sin nivel';
+  PILARES.forEach(p=>{let pp=0,si=0,med=0;const cd={};p.crit.forEach(c=>{const v=estado[c.id];pp+=pts(v);if(v==='si')si++;else if(v==='med')med++;cd[c.id]={estado:v==='si'?'Implementado':v==='med'?'En proceso':v==='no'?'No aplica':'Sin marcar',pts:pts(v),evidencia:evidencias[c.id]?evidencias[c.id].nombre:''};});total+=pp;pd[p.id]={pts:pp,tot:p.tot,pct:(pp/p.tot)*100};pilarRes.push(p.n+': '+pp.toFixed(1)+'/'+p.tot+' ('+(((pp/p.tot)*100).toFixed(0))+'%)');detalle[p.id]=cd;});
+  const pct=((total/TOTAL_CRIT)*100).toFixed(1),nivel=calcNivel(parseFloat(pct),pd),nivelNom=nivel==='avz'?'360° Oro':nivel==='int'?'180° Plata':nivel==='ini'?'90° Bronce':'Sin nivel';
   const archivos={};Object.entries(evidencias).forEach(([id,a])=>{if(a?.base64)archivos[id]={nombre:a.nombre,tipo:a.tipo,base64:a.base64};});
-  const payload={tipo_actor:'Venue',nombre,ciudad:document.getElementById('d_ciudad').value.trim(),resp:document.getElementById('d_resp').value.trim(),email:document.getElementById('d_email').value.trim(),socio:document.getElementById('d_socio').value,fecha:document.getElementById('d_fecha').value,cert:document.getElementById('d_cert').value.trim(),adicional:document.getElementById('d_adicional').value.trim(),firmaNom:document.getElementById('f_nom').value.trim(),firmaCargo:document.getElementById('f_cargo').value.trim(),firmaOrg:document.getElementById('f_org2').value.trim(),firmaFecha:document.getElementById('f_fecha').value,puntajeTotal:total.toFixed(1),porcentajeTotal:pct+'%',nivel:nivelNom,pilarResumen:pilarRes.join(' | '),p1_pct:pd['GS']?.pct.toFixed(0)+'%',p2_pct:pd['SE']?.pct.toFixed(0)+'%',p3_pct:pd['CI']?.pct.toFixed(0)+'%',p4_pct:pd['AM']?.pct.toFixed(0)+'%',obs_p1:observaciones['GS']||'',obs_p2:observaciones['SE']||'',obs_p3:observaciones['CI']||'',obs_p4:observaciones['AM']||'',detalle:JSON.stringify(detalle),archivos:JSON.stringify(archivos),timestamp:new Date().toISOString()};
+  const payload={tipo_actor:'Venue',clave_acceso:claveActiva,nombre,ciudad:document.getElementById('d_ciudad').value.trim(),resp:document.getElementById('d_resp').value.trim(),email:document.getElementById('d_email').value.trim(),socio:document.getElementById('d_socio').value,fecha:document.getElementById('d_fecha').value,cert:document.getElementById('d_cert').value.trim(),adicional:document.getElementById('d_adicional').value.trim(),firmaNom:document.getElementById('f_nom').value.trim(),firmaCargo:document.getElementById('f_cargo').value.trim(),firmaOrg:document.getElementById('f_org2').value.trim(),firmaFecha:document.getElementById('f_fecha').value,puntajeTotal:total.toFixed(1),porcentajeTotal:pct+'%',nivel:nivelNom,pilarResumen:pilarRes.join(' | '),p1_pct:pd['GS']?.pct.toFixed(0)+'%',p2_pct:pd['SE']?.pct.toFixed(0)+'%',p3_pct:pd['CI']?.pct.toFixed(0)+'%',p4_pct:pd['AM']?.pct.toFixed(0)+'%',obs_p1:observaciones['GS']||'',obs_p2:observaciones['SE']||'',obs_p3:observaciones['CI']||'',obs_p4:observaciones['AM']||'',detalle:JSON.stringify(detalle),archivos:JSON.stringify(archivos),timestamp:new Date().toISOString()};
   const btn=document.getElementById('btnEnviar');btn.textContent='⏳ Enviando...';btn.classList.add('sending');btn.disabled=true;
-  fetch(APPS_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(()=>{btn.textContent='✓ Enviado';btn.classList.remove('sending');document.getElementById('sendOk').classList.add('vis');try{localStorage.removeItem(LS_KEY);}catch(e){}}).catch(()=>{btn.textContent='📤 Enviar a AOCA';btn.classList.remove('sending');btn.disabled=false;document.getElementById('sendErr').classList.add('vis');setTimeout(()=>document.getElementById('sendErr').classList.remove('vis'),5000);});
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload)
+  })
+  .then(res => res.json())
+  .then(data => {
+    btn.classList.remove('sending');
+    if (data.ok) {
+      btn.textContent = '✓ Enviado';
+      btn.classList.add('sent');
+      document.getElementById('sendOk').classList.add('vis');
+      try { localStorage.removeItem(LS_KEY); } catch(e) {}
+    } else {
+      btn.textContent = '📤 Enviar a AOCA';
+      btn.disabled = false;
+      alert('Error al registrar: ' + (data.error || 'Verificá los datos enviados.'));
+      document.getElementById('sendErr').classList.add('vis');
+      setTimeout(() => document.getElementById('sendErr').classList.remove('vis'), 5000);
+    }
+  })
+  .catch(() => {
+    btn.classList.remove('sending');
+    btn.textContent = '📤 Enviar a AOCA';
+    btn.disabled = false;
+    alert('No se pudo conectar con el servidor. Tus respuestas siguen guardadas en este navegador: verificá tu conexión y volvé a intentar el envío.');
+    document.getElementById('sendErr').classList.add('vis');
+    setTimeout(() => document.getElementById('sendErr').classList.remove('vis'), 5000);
+  });
 }
 
 function limpiar(){
   if(!confirm('¿Limpiar todo el formulario? Se perderá el progreso guardado.'))return;
   try{localStorage.removeItem(LS_KEY);}catch(e){}
-  Object.keys(estado).forEach(k=>{estado[k]=null;});Object.keys(evidencias).forEach(k=>{delete evidencias[k];});Object.keys(observaciones).forEach(k=>{observaciones[k]='';const el=document.getElementById('obs-'+k);if(el)el.value='';});
+  Object.keys(estado).forEach(k=>{estado[k]=null;});Object.keys(evidencias).forEach(k=>{delete evidencias[k];});Object.keys(observaciones).forEach(k=>{observaciones[k]='';const el=document.getElementById('obs-'+k);if(el)el.value='';});['d_nombre','d_edicion','d_destino','d_org','d_ciudad','d_resp','d_email','d_socio','d_fecha','d_cert','d_redes','d_ferias','d_adicional','f_nom','f_cargo','f_org2','f_fecha'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});const msg=document.getElementById('autosaveMsg');if(msg)msg.textContent='El progreso se guarda automáticamente en este navegador';document.getElementById('sendOk')?.classList.remove('vis');document.getElementById('sendErr')?.classList.remove('vis');
   PILARES.forEach(p=>p.crit.forEach(c=>{['s','m','n'].forEach(v=>{const b=document.getElementById('b'+v+'-'+c.id);if(b)b.className='op-btn';});const pt=document.getElementById('pt-'+c.id);if(pt){pt.textContent='— pts';pt.className='pts-tag';}const cr=document.getElementById('c-'+c.id);if(cr)cr.classList.remove('impl','proc');const evb=document.getElementById('evb-'+c.id);if(evb){evb.textContent='📎 Adjuntar evidencia';evb.classList.remove('cargada');}const evf=document.getElementById('evf-'+c.id);if(evf)evf.value='';const evp=document.getElementById('evp-'+c.id);if(evp)evp.classList.remove('vis');}));
   recalc();
 }
